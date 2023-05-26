@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import FormInput from "../FormInput/FormInput";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -35,20 +35,14 @@ const General = () => {
       .required("Required"),
   });
 
-  const { updateName } = useContext(AppContext);
+  const { setData,data } = useContext(AppContext);
 
-  const handleFieldChange = (values) => {
-    updateName(
-      values.name,
-      values.title,
-      values.company,
-      values.phone,
-      values.websitelink,
-      values.email,
-      values.address
-    ); // Update the name value in the context
+  const handleFieldChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]:e.target.value
+    })
   };
-
   return (
     <div className="generaleditor">
       <div className="generaleditor-container">
@@ -68,7 +62,8 @@ const General = () => {
             validateOnMount
             validationSchema={validation}
           >
-            {(formik) => (
+            {(formik) =>{
+            return (
               <Form>
                 <div>
                   <FormInput
@@ -78,11 +73,10 @@ const General = () => {
                     className="edit-input"
                     margin="m-4"
                     onChange={(e) => {
+                      console.log(e.target);
                       formik.handleChange(e);
-                      setTimeout(() => {
-                        handleFieldChange(formik.values);
-                      }, 0);
-                    }}
+                      handleFieldChange(e);
+                      }}
                   />
                   <FormInput
                     label="Title"
@@ -91,8 +85,8 @@ const General = () => {
                     className="edit-input"
                     margin="m-4"
                     onChange={(e) => {
-                      formik.handleChange(e);
-                      handleFieldChange(formik.values);
+                    formik.handleChange(e);
+                    handleFieldChange(e);
                     }}
                   />
                   <FormInput
@@ -102,9 +96,10 @@ const General = () => {
                     className="edit-input"
                     margin="m-4"
                     onChange={(e) => {
+                      console.log(e.target);
                       formik.handleChange(e);
-                      handleFieldChange(formik.values);
-                    }}
+                      handleFieldChange(e);
+                      }}
                   />
                   <FormInput
                     label="Phone"
@@ -113,9 +108,10 @@ const General = () => {
                     className="edit-input"
                     margin="m-4"
                     onChange={(e) => {
+                      console.log(e.target);
                       formik.handleChange(e);
-                      handleFieldChange(formik.values);
-                    }}
+                      handleFieldChange(e);
+                      }}
                   />
                   <FormInput
                     label="Website URL"
@@ -124,9 +120,10 @@ const General = () => {
                     className="edit-input"
                     margin="m-4"
                     onChange={(e) => {
+                      console.log(e.target);
                       formik.handleChange(e);
-                      handleFieldChange(formik.values);
-                    }}
+                      handleFieldChange(e);
+                      }}
                   />
                   <FormInput
                     label="Email"
@@ -135,9 +132,10 @@ const General = () => {
                     className="edit-input"
                     margin="m-4"
                     onChange={(e) => {
+                      console.log(e.target);
                       formik.handleChange(e);
-                      handleFieldChange(formik.values);
-                    }}
+                      handleFieldChange(e);
+                      }}
                   />
                   <FormInput
                     label="Address"
@@ -146,14 +144,15 @@ const General = () => {
                     className="edit-input"
                     margin="m-4"
                     onChange={(e) => {
+                      console.log(e.target);
                       formik.handleChange(e);
-                      handleFieldChange(formik.values);
-                    }}
+                      handleFieldChange(e);
+                      }}
                   />
                   <button type="submit">Submit</button>
                 </div>
               </Form>
-            )}
+            )}}
           </Formik>
         </div>
       </div>

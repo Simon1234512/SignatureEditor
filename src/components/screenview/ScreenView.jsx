@@ -4,7 +4,7 @@ import { AppContext } from "../siteEditor/AppContext";
 
 const ScreenView = (props) => {
 
-  const { name , title , company , phone , website , email , address  } = useContext(AppContext);
+  const { data } = useContext(AppContext);
  //const {title} = useContext(AppContext);
   return (
     <>
@@ -15,13 +15,13 @@ const ScreenView = (props) => {
             <span></span>
             <span></span>
           </div>
-          <div className="screenview-container-middle">{name}</div>
-          <div className="screenview-container-bottom">{title}</div>
-          <div className="screenview-container-bottom">{company}</div>
-          <div className="screenview-container-bottom">{phone}</div>
-          <div className="screenview-container-bottom">{website}</div>
-          <div className="screenview-container-bottom">{email}</div>
-          <div className="screenview-container-bottom">{address}</div>
+          <div className="screenview-container-middle">{data.name}</div>
+          <div className="screenview-container-bottom">{data.title}</div>
+          <div className="screenview-container-bottom">{data.company}</div>
+          <div className="screenview-container-bottom">{data.phone}</div>
+          <div className="screenview-container-bottom">{data.websitelink}</div>
+          <div className="screenview-container-bottom">{data.email}</div>
+          <div className="screenview-container-bottom">{data.address}</div>
           <div className="screenview-container-content">{props.children}</div>
         </div>
       </div>
