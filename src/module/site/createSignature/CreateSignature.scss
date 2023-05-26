@@ -1,0 +1,21 @@
+.createsignature {
+  &-container {
+    margin: auto;
+    width: 80%;
+    display: flex;
+    // align-items: center;
+    &-editor {
+      //   width: 40%;
+      width: 48rem;
+      //   height: 80vh;
+      height: 90%;
+      //   background-color: red;
+
+      background: #00c6f782;
+      padding: 3rem;
+    }
+    &-view {
+      width: 60%;
+    }
+  }
+}
